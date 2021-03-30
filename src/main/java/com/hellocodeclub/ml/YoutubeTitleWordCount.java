@@ -1,6 +1,6 @@
 package com.hellocodeclub.ml;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
@@ -34,7 +34,7 @@ public class YoutubeTitleWordCount {
                 .split(" ")).iterator());
 
         Map<String, Long> wordCounts = words.countByValue();
-        List<Map.Entry> sorted = wordCounts.entrySet().stream()
+        List<Map.Entry<String, Long>> sorted = wordCounts.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue()).collect(Collectors.toList());
         for (Map.Entry<String, Long> entry : sorted) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
